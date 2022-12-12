@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="KapitzaPendulum" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.german.GLMain" />
+    <module name="kapitza_pendulum" />
+    <option name="VM_PARAMETERS" value="-Djogl.disable.openglcore" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
