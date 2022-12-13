@@ -16,6 +16,9 @@ public class Base3GLEventListener implements GLEventListener {
     public void init(GLAutoDrawable glAutoDrawable) {
         GL2 gl = glAutoDrawable.getGL().getGL2();
 
+        gl.glEnable(GL2.GL_DEPTH_TEST);
+        gl.glEnable(GL2.GL_COLOR_MATERIAL);
+
         Color3f clearColor = GLSettings.getClearColor();
         gl.glClearColor((float) clearColor.getRed(),
                 (float) clearColor.getGreen(),
@@ -41,6 +44,7 @@ public class Base3GLEventListener implements GLEventListener {
         GLUT glut = new GLUT();
 
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
+        gl.glClear(GL2.GL_DEPTH_BUFFER_BIT);
 
         gl.glLoadIdentity();
 

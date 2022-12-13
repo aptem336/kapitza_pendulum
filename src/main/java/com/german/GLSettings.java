@@ -1,5 +1,6 @@
 package com.german;
 
+import com.german.kapitzapendulum.KapitzaPendulumGLEventListener;
 import com.jogamp.opengl.GLEventListener;
 
 import java.awt.*;
@@ -12,13 +13,16 @@ import java.util.List;
 
 public class GLSettings {
     private static final List<String> MESSAGES = new ArrayList<>();
+    private static final KapitzaPendulumGLEventListener KAPITZA_PENDULUM_GL_EVENT_LISTENER = new KapitzaPendulumGLEventListener();
     private static final List<GLEventListener> GL_EVENT_LISTENERS = new ArrayList<GLEventListener>() {{
         add(new Base3GLEventListener());
         add(new StaticLightGLEventListener(new int[]{0, 0, -1, 0}));
+        add(KAPITZA_PENDULUM_GL_EVENT_LISTENER);
     }};
     private static final List<KeyListener> KEY_LISTENERS = new ArrayList<KeyListener>() {{
     }};
     private static final List<MouseWheelListener> MOUSE_WHEEL_LISTENERS = new ArrayList<MouseWheelListener>() {{
+        add(KAPITZA_PENDULUM_GL_EVENT_LISTENER);
     }};
     private static final List<MouseMotionListener> MOUSE_MOTION_LISTENERS = new ArrayList<MouseMotionListener>() {{
     }};
