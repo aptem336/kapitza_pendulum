@@ -31,7 +31,6 @@ public class HeightConstraint implements Constraint {
         if (heightViolation < 0.0) {
             double correctionScalar = -Vector2D.dotProduct(constrainedVelocity, constraintNormal);
             correctionScalar += Vector2D.dotProduct(velocity, constraintNormal);
-            correctionScalar /= 2;
             correctionScalar += heightViolation / PhysicConstants.TIME_INTEGRATOR;
             constrainedVelocity.add(Vector2D.product(constraintNormal, correctionScalar));
         }

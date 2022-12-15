@@ -22,7 +22,7 @@ public class Pendulum implements Displayable, TimeVarying, LinearIntegrated, Gra
         gl.glPushMatrix();
         gl.glColor3d(1.0, 0.0, 0.0);
         gl.glTranslated(location.getX(), location.getY(), 0.0);
-        glut.glutSolidSphere(0.05, 20, 20);
+        glut.glutSolidSphere(0.1, 20, 20);
         gl.glPopMatrix();
     }
 

@@ -20,7 +20,7 @@ public class SliderCrankLinkage implements Displayable, TimeVarying, LinearInteg
 
     private static final double MIN_CRANK_W = 0.0;
     private static final double MAX_CRANK_W = Math.PI * 500;
-    private static final double CRANK_W_INCREMENT = Math.PI * 2;
+    private static final double CRANK_W_INCREMENT = Math.PI * 5;
 
     /**
      * радиус кривошипа
@@ -70,7 +70,7 @@ public class SliderCrankLinkage implements Displayable, TimeVarying, LinearInteg
      */
     public void increaseCrankW(int sign) {
         this.crankW += sign * CRANK_W_INCREMENT;
-        this.crankW = Math.min(MIN_CRANK_W, this.crankW);
+        this.crankW = Math.max(MIN_CRANK_W, this.crankW);
         this.crankW = Math.min(MAX_CRANK_W, this.crankW);
     }
 
@@ -80,32 +80,10 @@ public class SliderCrankLinkage implements Displayable, TimeVarying, LinearInteg
         GLUT glut = new GLUT();
 
         gl.glPushMatrix();
-        gl.glTranslated(0.0, sliderLength / 2, 0.0);
-
-        gl.glPushMatrix();
         gl.glColor3d(1.0, 1.0, 1.0);
         gl.glTranslated(0.0, sliderLocation.getY(), 0.0);
         gl.glRotated(90.0, 1.0, 0.0, 0.0);
-        glut.glutSolidCylinder(0.01, sliderLength, 10, 1);
-        gl.glPopMatrix();
-
-        gl.glPushMatrix();
-        gl.glColor3d(1.0, 1.0, 1.0);
-        gl.glTranslated(0.0, -sliderLength, 0.01);
-        gl.glRotated(Math.toDegrees(crankAngle), 0.0, 0.0, 1.0);
-        glut.glutSolidCylinder(crankR + 0.01, 0.01, 4, 0);
-        gl.glPopMatrix();
-
-        gl.glPushMatrix();
-        gl.glColor3d(1.0, 0.0, 0.0);
-        gl.glNormal3d(0.0, 0.0, -1.0);
-        gl.glLineWidth(3.0F);
-        gl.glBegin(GL2.GL_LINES);
-        gl.glVertex2d(0.0, sliderLocation.getY() - sliderLength);
-        gl.glVertex2d(Math.cos(crankAngle - Math.PI / 2) * crankR, Math.sin(crankAngle - Math.PI / 2) * crankR - sliderLength);
-        gl.glEnd();
-        gl.glPopMatrix();
-
+        glut.glutSolidCylinder(0.02, sliderLength, 10, 1);
         gl.glPopMatrix();
     }
 

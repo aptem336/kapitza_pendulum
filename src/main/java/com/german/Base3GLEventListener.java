@@ -48,6 +48,7 @@ public class Base3GLEventListener implements GLEventListener {
 
         gl.glLoadIdentity();
 
+        gl.glColor3d(1.0, 1.0, 1.0);
         for (int i = 0; i < GLSettings.getMessages().size(); i++) {
             gl.glWindowPos2i(10, GLSettings.getMainFrameSize().height - 20 - 20 * i);
             glut.glutBitmapString(GLUT.BITMAP_9_BY_15, GLSettings.getMessages().get(i));

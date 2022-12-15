@@ -1,5 +1,6 @@
 package com.german.kapitzapendulum;
 
+import com.german.GLSettings;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 
@@ -8,6 +9,12 @@ import java.awt.event.MouseWheelListener;
 
 public class KapitzaPendulumGLEventListener implements GLEventListener, MouseWheelListener {
     private KapitzaPendulum kapitzaPendulum;
+
+    private static final String CONTROL_MESSAGE = "MouseWheel - speed";
+
+    static {
+        GLSettings.getMessages().add(CONTROL_MESSAGE);
+    }
 
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
@@ -30,7 +37,6 @@ public class KapitzaPendulumGLEventListener implements GLEventListener, MouseWhe
 
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
-        kapitzaPendulum.increaseCrankR(e.getWheelRotation());
-
+        kapitzaPendulum.increaseCrankR(-e.getWheelRotation());
     }
 }
